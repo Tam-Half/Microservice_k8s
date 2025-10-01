@@ -1,0 +1,26 @@
+name: orderservice-be
+
+applabels: orderservice-be
+#=====================
+# DEPLOYMENT
+#=====================
+
+image:
+  name: orderservicecontainer
+  repository: orderservice
+  tag: 46
+
+#======================
+# SERVICE
+#=====================
+
+portService: PORTSERVICE
+portTarget: PORTTARGETORDERSERVICE
+
+env:
+   - name: PORTSERVICE
+     valueFrom:
+        secretKeyRef:
+           - name: sercetorderservice
+             key: portservice
+

@@ -1,0 +1,34 @@
+# ==========================================
+# 1. APPLICATION METADATA
+# ==========================================
+
+#Info of Replication:
+replicaCount: 1
+
+# ==========================================
+# 2. TCP/CLUSTERIP
+# ==========================================
+
+internalTrafficPolicy: Cluster
+ipFamilyPolicy: SingleStack
+typeTCP: ClusterIP
+
+# ==========================================
+# 3. INGRESS/NGINX
+# ==========================================
+
+ingressClassName: nginx
+pathType: Prefix
+
+# ==========================================
+# 4. REGISTRY / DOCKER HUB
+# ==========================================
+image:
+  registry: REGISTRY
+
+env:
+  - name: REGISTRY
+    valueFrom:
+      secretKeyRef:
+        name: secretconfig
+        key: registry_name
