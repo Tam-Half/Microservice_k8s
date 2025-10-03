@@ -8,7 +8,7 @@ applabels: orderservice-be
 image:
   name: orderservicecontainer
   repository: orderservice
-  tag: 46
+  tag: 50
 
 # resources:
 #   request:
