@@ -5,8 +5,8 @@ metadata:
   namespace: {{ .Release.Namespace }}
 data:
   application.properties: |
-   server.port= ${PORT_SERVICE}
-   spring.application.name= ${NAME_SERVICE}
+   server.port=${PORT_SERVICE}
+   spring.application.name=${NAME_SERVICE}
 
    spring.datasource.url=jdbc:sqlserver://${SQLSERVER_HOST}:${SQLSERVER_PORT};databaseName=${SQLSERVER_DB};encrypt=false
    spring.datasource.username= ${SQLSERVER_USERNAME}
