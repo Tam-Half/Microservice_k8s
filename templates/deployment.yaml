@@ -18,25 +18,24 @@ spec:
           ports:
             - containerPort: {{ .Values.secret.portContainerDeployment }}
 
-          {{- if .Values.resources }}
-          
-          {{- if .Values.secret }}       
+          {{- if .Values.secret }}
           envFrom:
-           - secretRef:
-              name: {{ .Values.secret.name }}
-              optional: false
+            - secretRef:
+                name: {{ .Values.secret.name }}
+                optional: false
           {{- end }}
 
+          {{- if .Values.resources }}
           resources:
             {{- if .Values.resources.request }}
             requests:
-              memory: "{{ .Values.resources.request.memory }}" #Mi
-              cpu: "{{ .Values.resources.request.cpu }}" #m
+              memory: "{{ .Values.resources.request.memory }}"
+              cpu: "{{ .Values.resources.request.cpu }}"
             {{- end }}
             {{- if .Values.resources.limit }}
             limits:
-              memory: "{{ .Values.resources.limit.memory }}" #Mi
-              cpu: "{{ .Values.resources.limit.cpu }}" #m 
+              memory: "{{ .Values.resources.limit.memory }}"
+              cpu: "{{ .Values.resources.limit.cpu }}"
             {{- end }}
           {{- end }}
 
