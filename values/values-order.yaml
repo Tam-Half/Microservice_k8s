@@ -46,7 +46,7 @@ volumeMounts:
     subPath: application.properties
 
   - name: orderservice-storage
-    mountPath: /data # chưa đúng với ý nghĩa
+    mountPath: /data/orderservice/be/storage # chưa đúng với ý nghĩa
 #======================
 # SECRET
 #======================

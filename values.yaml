@@ -41,5 +41,5 @@ pv:
 
 pvc:
   name: nfs-pvc
-  storage: 5Gi
+  storage: 1Gi
   accessModes: ReadWriteMany
