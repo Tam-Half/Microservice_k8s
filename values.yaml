@@ -21,5 +21,24 @@ ingressClassName: nginx
 pathType: Prefix
 
 # ==========================================
-# 4. REGISTRY / DOCKER HUB
+# 4. HPA
 # ==========================================
+hpa:
+  name: orderservice-autoscaling
+  minRep: 2
+  maxRep: 4
+
+# ==========================================
+# 5. storage, pv and pvc
+# ==========================================
+storage:
+  name: nfs-storage
+pv:
+  name: nfs-pv
+  storage: 10Gi
+  accessModes: ReadWriteMany
+
+pvc:
+  name: nfs-pvc
+  storage: 5Gi
+  accessModes: ReadWriteMany

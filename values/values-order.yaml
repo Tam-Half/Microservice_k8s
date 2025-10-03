@@ -36,10 +36,17 @@ volumes:
     configMap:
       name: orderservice-be-application-propertie-configmap
 
+  - name: orderservice-storage
+    persistentVolumeClaim:
+      claimName: nfs-pvc # chưa được tối ưu lắm
+
 volumeMounts:
   - name: application-properties-config-volume
     mountPath: /run/src/main/resources/application.properties
     subPath: application.properties
+
+  - name: orderservice-storage
+    mountPath: /data # chưa đúng với ý nghĩa
 #======================
 # SECRET
 #======================

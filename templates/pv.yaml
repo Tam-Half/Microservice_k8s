@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: {{ .Values.pv.name }}
+spec:
+  capacity:
+    storage: {{ .Values.pv.storage }}
+  accessModes:
+    - {{ .Values.pv.accessModes }}
+  nfs:
+    path: {{ .Values.secret.pathStorage }}
+    server: {{ .Values.secret.serverStorage }}
+  persistentVolumeReclaimPolicy: Retain
+  storageClassName: {{ .Values.storage.name }}
