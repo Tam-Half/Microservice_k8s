@@ -10,17 +10,38 @@ image:
   repository: orderservice
   tag: 46
 
+# resources:
+#   request:
+#     memory: 64Mi
+#     cpu: 250m
+#   limit:
+#     memory: 128Mi
+#     cpu: 500m
+
 #======================
-# SERVICE
+# INGRESS
 #=====================
+domain: order.local
 
-portService: PORTSERVICE
-portTarget: PORTTARGETORDERSERVICE
+#======================
+# CONFIGMAP
+#=====================
+nameConfigMap: orderservice-be-application-propertie-configmap
 
-env:
-   - name: PORTSERVICE
-     valueFrom:
-        secretKeyRef:
-           - name: sercetorderservice
-             key: portservice
+#======================
+# VOLUMES AND MOUNTVOLUMES
+#======================
+volumes:
+  - name: application-properties-config-volume
+    configMap:
+      name: orderservice-be-application-propertie-configmap
 
+volumeMounts:
+  - name: application-properties-config-volume
+    mountPath: /run/src/main/resources/application.properties
+    subPath: application.properties
+#======================
+# SECRET
+#======================
+secret:
+  name: secret-value-orderservice

@@ -23,12 +23,3 @@ pathType: Prefix
 # ==========================================
 # 4. REGISTRY / DOCKER HUB
 # ==========================================
-image:
-  registry: REGISTRY
-
-env:
-  - name: REGISTRY
-    valueFrom:
-      secretKeyRef:
-        name: secretconfig
-        key: registry_name

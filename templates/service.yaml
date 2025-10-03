@@ -10,8 +10,8 @@ spec:
   ipFamilyPolicy: {{ .Values.ipFamilyPolicy }}
   ports:
     - name:   {{ .Values.nameTCP }}
-      port:   {{ .Values.portService }}
-      targetPort: {{ .Values.portTarget }}
+      port:   {{ .Values.secret.portService }}
+      targetPort: {{ .Values.secret.portTarget }}
   selector:
     {{ include "common.labels" . | nindent 4 }}
   sessionAffinity: None
