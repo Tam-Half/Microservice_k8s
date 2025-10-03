@@ -12,6 +12,7 @@ replicaCount: 1
 internalTrafficPolicy: Cluster
 ipFamilyPolicy: SingleStack
 typeTCP: ClusterIP
+nameTCP: tcp
 
 # ==========================================
 # 3. INGRESS/NGINX
