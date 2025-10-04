@@ -53,3 +53,15 @@ volumeMounts:
 secret:
   name: secret-value-orderservice
   enabled: true
+  host: ${DB_HOST}
+  port: ${DB_PORT}
+  namedb: ${DB_NAME}
+  username: ${DB_USERNAME}
+  pswd: ${DB_PASSWORD}
+  portService: ${PORT_SERVICE}
+  portTarget: ${PORT_TARGET}
+  registry: ${REGISTRY}
+  nameservice: ${DOCKER_NAMESERVICE}
+  pathStorage: /data
+  serverStorage: ${SERVER_STORAGE}
+  portContainerDeployment: ${PORT_CONTAINER_DEPLOYMENT}
