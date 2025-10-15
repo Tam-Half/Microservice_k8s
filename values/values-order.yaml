@@ -11,21 +11,12 @@ image:
   tag: 62
 
 resources:
-<<<<<<< HEAD
    request:
      memory: 64Mi
      cpu: 250m
    limit:
      memory: 128Mi
      cpu: 500m
-=======
-  request:
-    memory: 64Mi
-    cpu: 250m
-  limit:
-    memory: 128Mi
-    cpu: 500m
->>>>>>> becc9f1f8ce2b1dbd7216451ecb541127ef35b20
 
 #======================
 # INGRESS
