@@ -10,13 +10,13 @@ image:
   repository: orderservice
   tag: latest
 
-# resources:
-#   request:
-#     memory: 64Mi
-#     cpu: 250m
-#   limit:
-#     memory: 128Mi
-#     cpu: 500m
+resources:
+   request:
+     memory: 64Mi
+     cpu: 250m
+   limit:
+     memory: 128Mi
+     cpu: 500m
 
 #======================
 # INGRESS
@@ -36,17 +36,17 @@ volumes:
     configMap:
       name: orderservice-be-application-propertie-configmap
 
-  - name: orderservice-storage
-    persistentVolumeClaim:
-      claimName: nfs-pvc # chưa được tối ưu lắm
+  # - name: orderservice-storage
+  #   persistentVolumeClaim:
+  #     claimName: nfs-pvc # chưa được tối ưu lắm
 
 volumeMounts:
   - name: application-properties-config-volume
     mountPath: /run/src/main/resources/application.properties
     subPath: application.properties
 
-  - name: orderservice-storage
-    mountPath: /data/orderservice/be/storage # chưa đúng với ý nghĩa
+  # - name: orderservice-storage
+  #   mountPath: /data/orderservice/be/storage # chưa đúng với ý nghĩa
 #======================
 # SECRET
 #======================
