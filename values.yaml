@@ -24,22 +24,23 @@ pathType: Prefix
 # ==========================================
 # 4. HPA
 # ==========================================
-hpa:
-  name: orderservice-autoscaling
-  minRep: 2
-  maxRep: 4
+
+# hpa:
+#   name: orderservice-autoscaling
+#   minRep: 2
+#   maxRep: 4
 
 # ==========================================
 # 5. storage, pv and pvc
 # ==========================================
-storage:
-  name: nfs-storage
-pv:
-  name: nfs-pv-tesing
-  storage: 10Gi
-  accessModes: ReadWriteMany
+# storage:
+#   name: nfs-storage
+# pv:
+#   name: nfs-pv-tesing
+#   storage: 10Gi
+#   accessModes: ReadWriteMany
 
-pvc:
-  name: nfs-pvc
-  storage: 1Gi
-  accessModes: ReadWriteMany
+# pvc:
+#   name: nfs-pvc
+#   storage: 1Gi
+#   accessModes: ReadWriteMany

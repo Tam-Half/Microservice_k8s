@@ -4,5 +4,5 @@ app: {{ .Values.applabels }}
 
 
 {{- define "mychart.secretName" -}}
-{{ .Values.secrets.name }}
+{{ .Values.name }}
 {{- end }}
