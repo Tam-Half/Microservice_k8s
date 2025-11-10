@@ -25,7 +25,7 @@ spec:
                 optional: false
           {{- end }}
 
-          {{- if .Values.resources }}
+          {{- if .Values.resources.enabled }}
           resources:
             {{- if .Values.resources.request }}
             requests:

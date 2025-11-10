@@ -1,3 +1,5 @@
+
+{{- if (or .Values.pvc.enabled .Values.pvc ) }}
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
@@ -9,4 +11,5 @@ spec:
   resources:
     requests:
       storage: {{ .Values.pvc.storage }}
-  storageClassName: {{ .Values.storage.name }}
+  storageClassName: {{ .Values.pvc.storage.name }}
+{{- end }}

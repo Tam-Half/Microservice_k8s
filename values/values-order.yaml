@@ -11,22 +11,34 @@ image:
   tag: 62
 
 resources:
-   request:
-     memory: 64Mi
-     cpu: 250m
-   limit:
-     memory: 128Mi
-     cpu: 500m
+  enabled: false
+  request:
+    memory: 64Mi
+    cpu: 250m
+  limit:
+    memory: 128Mi
+    cpu: 500m
+
+#======================
+# SERVICE
+#=====================
+service:
+  enabled: false
+  name:
 
 #======================
 # INGRESS
 #=====================
-domain: order.local
+ingress: 
+  enabled: false
+  domain: order.local
 
 #======================
 # CONFIGMAP
 #=====================
-nameConfigMap: orderservice-be-application-propertie-configmap
+configmap:
+  enabled: false
+  nameConfigMap: orderservice-be-application-propertie-configmap
 
 #======================
 # VOLUMES AND MOUNTVOLUMES
@@ -36,32 +48,16 @@ volumes:
     configMap:
       name: orderservice-be-application-propertie-configmap
 
-  # - name: orderservice-storage
-  #   persistentVolumeClaim:
-  #     claimName: nfs-pvc # chưa được tối ưu lắm
 
 volumeMounts:
   - name: application-properties-config-volume
     mountPath: /run/src/main/resources/application.properties
     subPath: application.properties
 
-  # - name: orderservice-storage
-  #   mountPath: /data/orderservice/be/storage # chưa đúng với ý nghĩa
 #======================
 # SECRET
 #======================
-secret:
+secrets:
+  enabled: false
   name: secret-value-orderservice
-  enabled: true
-  host: ${DB_HOST}
-  port: ${DB_PORT}
-  namedb: ${DB_NAME}
-  username: ${DB_USERNAME}
-  pswd: ${DB_PASSWORD}
-  portService: ${PORT_SERVICE}
-  portTarget: ${PORT_TARGET}
-  registry: ${REGISTRY}
-  nameservice: ${DOCKER_NAMESERVICE}
-  pathStorage: /data
-  serverStorage: ${SERVER_STORAGE}
-  portContainerDeployment: ${PORT_CONTAINER_DEPLOYMENT}
+  
