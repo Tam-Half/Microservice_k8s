@@ -39,6 +39,10 @@ ingress:
 configmap:
   enabled: false
   nameConfigMap: orderservice-be-application-propertie-configmap
+  data:
+    server.port: "${PORT_SERVICE}"
+    spring.application.name: "${NAME_SERVICE}"
+
 
 #======================
 # VOLUMES AND MOUNTVOLUMES

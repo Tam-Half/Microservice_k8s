@@ -6,3 +6,4 @@ app: {{ .Values.applabels }}
 {{- define "mychart.secretName" -}}
 {{ .Values.name }}
 {{- end }}
+
