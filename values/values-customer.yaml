@@ -1,0 +1,58 @@
+name: customerservice
+
+applabels: customerservice
+#=====================
+# DEPLOYMENT
+#=====================
+
+image:
+  name: customerservice-container
+  repository: customerservice
+  tag: 01
+
+resources:
+  enabled: false
+  request:
+    memory: 64Mi
+    cpu: 250m
+  limit:
+    memory: 128Mi
+    cpu: 500m
+
+#======================
+# SERVICE
+#=====================
+service:
+  enabled: true
+
+#======================
+# INGRESS
+#=====================
+ingress: 
+  enabled: true
+  domain: customer.ingress
+
+#======================
+# CONFIGMAP
+#=====================
+
+# configmap:
+#   enabled: false
+#   nameConfigMap: orderservice-be-application-propertie-configmap
+#   data:
+#     server.port: "${PORT_SERVICE}"
+#     spring.application.name: "${NAME_SERVICE}"
+
+
+#======================
+# VOLUMES AND MOUNTVOLUMES
+#======================
+
+
+
+#======================
+# SECRETS
+#======================
+secrets:
+  enabled: false
+

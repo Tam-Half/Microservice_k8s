@@ -17,11 +17,11 @@ spec:
           image: {{ .Values.secret.registry }}/{{ .Values.image.repository }}:{{ .Values.image.tag }}
           ports:
             - containerPort: {{ .Values.secret.portContainerDeployment }}
-
-          {{- if .Values.secret }}
+        
+          {{- if .Values.secrets.enabled }}
           envFrom:
             - secretRef:
-                name: {{ .Values.secret.name }}
+                name: {{ include "mychart.secretName" . }}-secret
                 optional: false
           {{- end }}
 
