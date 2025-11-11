@@ -6,13 +6,11 @@ metadata:
   namespace: {{ .Release.Namespace }}
 data:
   application.properties: |
-{{- with .Values.configmap.data }}
-{{- range $key, $value := . }}
-    {{ $key }}: "{{ $value }}"
+{{- if .Values.configmap.data }}
+{{- range $key, $value := .Values.configmap.data }}
+    {{ $key }}={{ $value }}
 {{- end }}
 {{- else }}
     # no configuration data provided
 {{- end }}
-{{- else }}
-# configmap.disabled
 {{- end }}
