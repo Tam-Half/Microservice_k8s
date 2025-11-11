@@ -38,13 +38,20 @@ spec:
               {{- end }}      
           {{- end }}
 
-          {{- if and .Values.env.enabled  }}
+          {{- if .Values.env.enabled }}
           env:
-          {{- range $key, $value := .Values.env }}
-            - name: {{ $key }}
-              value: {{ $value | quote }}
+            {{- range $key, $value := .Values.env }}
+            {{- if (kindIs "map" $value) }}
+            - name: {{ $value.name }}
+              valueFrom:
+                secretKeyRef:
+                  name: {{ $value.valueFrom.secretKeyRef.name }}
+                  key: {{ $value.valueFrom.secretKeyRef.key }}
+                  optional: {{ $value.valueFrom.secretKeyRef.optional | default false }}
+              {{- end }}
+              {{- end }}
           {{- end }}
-          {{- end }}
+
 
           {{- if .Values.resources.enabled }}
           resources:
