@@ -47,7 +47,8 @@ configmap:
 # VOLUMES AND MOUNTVOLUMES
 #======================
 
-
+env: 
+  enabled: false
 
 #======================
 # SECRETS
