@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: {{ .Values.image.name }}
-          image: ${{secrets.REGISTRY}}/{{ .Values.image.repository }}:{{ .Values.image.tag }}
+          image: tamtran0210/{{ .Values.image.repository }}:{{ .Values.image.tag }}
           ports:
             - containerPort: {{ .Values.secret.portContainerDeployment }}
         

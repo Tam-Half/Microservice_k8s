@@ -53,9 +53,9 @@ configmap:
 # SECRETS
 #======================
 secret:
-  enabled: false
-  portService: ${{secrets.PORT_SERVICE}}
-  portTarget: ${secrets.PORT_TARGET_CONFIGSERVER}}
+  enabled: true
+  portService: 80
+  portTarget: 8888
 extraSecrets:
   enabled: false
 
