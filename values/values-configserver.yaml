@@ -57,11 +57,11 @@ env:
 #======================
 secret:
   enabled: true
-  portService: ${{secrets.PORT_SERVICE}}
-  portTarget: ${{secrets.PORT_TARGET_CONFIGSERVER}}
-  DB_HOST: ${{secrets.DB_HOST}}
-  DB_USER: ${{secrets.DB_USER}}
-  DB_PASS: ${{secrets.DB_PASS}}
+  portService: 80
+  portTarget: 8888
+  DB_HOST: 192.168.0.127
+  DB_USER: sa
+  DB_PASS: Root1234
 
 
 extraSecrets:
