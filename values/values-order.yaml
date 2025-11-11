@@ -1,14 +1,15 @@
-name: orderservice-be
+name: orderservice
 
-applabels: orderservice-be
+applabels: orderservice
 #=====================
 # DEPLOYMENT
 #=====================
 
 image:
-  name: orderservicecontainer
+  name: orderservice-container
   repository: orderservice
-  tag: 62
+  tag: "04"
+  port: 120
 
 resources:
   enabled: false
@@ -23,49 +24,97 @@ resources:
 # SERVICE
 #=====================
 service:
-  enabled: false
-  name:
+  enabled: true
 
 #======================
 # INGRESS
 #=====================
 ingress: 
-  enabled: false
-  domain: order.local
-
+  enabled: true
+  domain: order.argocd
 #======================
 # CONFIGMAP
 #=====================
+
 configmap:
   enabled: false
-  nameConfigMap: orderservice-be-application-propertie-configmap
-  data:
-    server.port: "${PORT_SERVICE}"
-    spring.application.name: "${NAME_SERVICE}"
+#   nameConfigMap: orderservice-be-application-propertie-configmap
+#   data:
+#     server.port: "${PORT_SERVICE}"
+#     spring.application.name: "${NAME_SERVICE}"
 
 
 #======================
 # VOLUMES AND MOUNTVOLUMES
 #======================
-volumes:
-  - name: application-properties-config-volume
-    configMap:
-      name: orderservice-be-application-propertie-configmap
 
 
-volumeMounts:
-  - name: application-properties-config-volume
-    mountPath: /run/src/main/resources/application.properties
-    subPath: application.properties
 
 #======================
-# SECRET
+# SECRETS
 #======================
 secret:
   enabled: true
-  name: 
-  
-extraSecrets:
+  portService: 80
+  portTarget: 8084
+
+env:
   enabled: true
-    - name: serviceB-secret
-    - name: shared-secret
+  0:
+    name: DB_HOST
+    valueFrom:
+      secretKeyRef:
+        name: configserver-secret
+        key: DB_HOST
+        optional: false
+  1:
+    name: DB_USER
+    valueFrom:
+      secretKeyRef:
+        name: configserver-secret
+        key: DB_USER
+        optional: false
+  2:
+    name: DB_PASS
+    valueFrom:
+      secretKeyRef:
+        name: configserver-secret
+        key: DB_PASS
+        optional: false
+  3:
+    name: SPRING_RABBITMQ_HOST
+    valueFrom:
+      secretKeyRef:
+        name: configserver-secret
+        key: SPRING_RABBITMQ_HOST
+        optional: false    
+  4:
+    name: SPRING_RABBITMQ_PORT
+    valueFrom:
+      secretKeyRef:
+        name: configserver-secret
+        key: SPRING_RABBITMQ_PORT
+        optional: false   
+  5:
+    name: SPRING_RABBITMQ_USERNAME
+    valueFrom:
+      secretKeyRef:
+        name: configserver-secret
+        key: SPRING_RABBITMQ_USERNAME
+        optional: false   
+  6:
+    name: SPRING_RABBITMQ_PASSWORD
+    valueFrom:
+      secretKeyRef:
+        name: configserver-secret
+        key: SPRING_RABBITMQ_PASSWORD
+        optional: false   
+
+#
+extraSecrets:
+  enabled: false
+#======================
+# PVC
+#======================
+pvc:
+  enabled: false
