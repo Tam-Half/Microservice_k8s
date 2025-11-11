@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: {{ .Values.image.name }}
-          image: tamtran0210/{{ .Values.image.repository }}:{{ .Values.image.tag | quote }}
+          image: tamtran0210/{{ .Values.image.repository }}:{{ .Values.image.tag  }}
           ports:
             - containerPort: {{ .Values.image.port }}
         
