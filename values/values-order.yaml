@@ -8,7 +8,7 @@ applabels: orderservice
 image:
   name: orderservice-container
   repository: orderservice
-  tag: "05"
+  tag: "06"
   port: 120
 
 resources:
