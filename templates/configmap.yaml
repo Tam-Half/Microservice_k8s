@@ -1,10 +1,9 @@
-# ConfigMap template
-{{- if .Values.configmap.enabled }}
 apiVersion: v1
 kind: ConfigMap
 metadata:
   name: {{ .Values.name }}-configmap
   namespace: {{ .Release.Namespace }}
+{{- if .Values.configmap.enabled }}
 data:
   application.properties: |
 {{- range $key, $value := .Values.configmap.data }}
@@ -13,4 +12,6 @@ data:
 {{- if not .Values.configmap.data }}
     # no configuration data provided
 {{- end }}
+{{- else }}
+data: {}
 {{- end }}
