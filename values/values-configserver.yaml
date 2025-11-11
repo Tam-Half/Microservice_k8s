@@ -36,8 +36,8 @@ ingress:
 # CONFIGMAP
 #=====================
 
-# configmap:
-#   enabled: false
+configmap:
+  enabled: false
 #   nameConfigMap: orderservice-be-application-propertie-configmap
 #   data:
 #     server.port: "${PORT_SERVICE}"
