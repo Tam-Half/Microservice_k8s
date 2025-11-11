@@ -50,6 +50,7 @@ configmap:
 
 env: 
   enabled: false
+  data: {}
 
 #======================
 # SECRETS
