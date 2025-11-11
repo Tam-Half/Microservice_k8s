@@ -1,6 +1,5 @@
-# ConfigMap for {{ .Values.name }}
+# ConfigMap template
 {{- if .Values.configmap.enabled }}
----
 apiVersion: v1
 kind: ConfigMap
 metadata:
