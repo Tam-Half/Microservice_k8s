@@ -1,5 +1,3 @@
-# ConfigMap for {{ .Values.name }}
----
 apiVersion: v1
 kind: ConfigMap
 metadata:
