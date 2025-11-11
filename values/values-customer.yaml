@@ -58,27 +58,29 @@ secret:
   portService: ${{secrets.PORT_SERVICE}}
   portTarget: ${secrets.PORT_TARGET_CUSTOMER}
 
-env: 
-  - name: DB_HOST
-    valueFrom:
-      secretKeyRef:
-        name: configserver-secret
-        key: DB_HOST
-        optional: false
-  - name: DB_USER
-    valueFrom:
-      secretKeyRef:
-        name: configserver-secret
-        key: DB_USER
-        optional: false
+env:
+  enabled: true
+  data: 
+    - name: DB_HOST
+      valueFrom:
+        secretKeyRef:
+          name: configserver-secret
+          key: DB_HOST
+          optional: false
+    - name: DB_USER
+      valueFrom:
+        secretKeyRef:
+          name: configserver-secret
+          key: DB_USER
+          optional: false
 
-  - name: DB_PASS
-    valueFrom:
-      secretKeyRef:
-        name: configserver-secret
-        key: DB_PASS
-        optional: false
-
+    - name: DB_PASS
+      valueFrom:
+        secretKeyRef:
+          name: configserver-secret
+          key: DB_PASS
+          optional: false
+  
 extraSecrets:
   enabled: false
 #======================
