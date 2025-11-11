@@ -59,9 +59,8 @@ secret:
   portService: 80
   portTarget: 8081
 
-secret:
+env:
   enabled: true
-  name: configserver
   0:
     name: DB_HOST
     valueFrom:
