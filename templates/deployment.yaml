@@ -17,7 +17,7 @@ spec:
         - name: {{ .Values.image.name }}
           image: tamtran0210/{{ .Values.image.repository }}:{{ .Values.image.tag }}
           ports:
-            - containerPort: {{ .Values.secret.portContainerDeployment }}
+            - containerPort: {{ .Values.image.port }}
         
           {{- if (or .Values.secret.enabled .Values.extraSecrets.enabled) }}
           envFrom:

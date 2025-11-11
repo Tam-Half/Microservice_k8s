@@ -9,6 +9,7 @@ image:
   name: configserver-container
   repository: config-server
   tag: 02
+  port: 120
 
 resources:
   enabled: false
