@@ -57,8 +57,12 @@ env:
 #======================
 secret:
   enabled: true
-  portService: 80
-  portTarget: 8888
+  portService: ${{secrets.PORT_SERVICE}}
+  portTarget: ${{secrets.PORT_TARGET_CONFIGSERVER}}
+  DB_HOST: ${{secrets.DB_HOST}}
+  DB_USER: ${{secrets.DB_USER}}
+  DB_PASS: ${{secrets.DB_PASS}}
+
 
 extraSecrets:
   enabled: false

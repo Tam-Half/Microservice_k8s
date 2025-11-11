@@ -8,7 +8,7 @@ applabels: customerservice
 image:
   name: customerservice-container
   repository: customerservice
-  tag: 01
+  tag: "01"
 
 resources:
   enabled: false
@@ -30,7 +30,7 @@ service:
 #=====================
 ingress: 
   enabled: true
-  domain: customer.ingress
+  domain: customer.argocd
 
 #======================
 # CONFIGMAP
@@ -54,31 +54,35 @@ ingress:
 # SECRETS
 #======================
 secret:
-  enabled: false
-  portService: ${}
-  portTarget: ${}
+  enabled: true
+  portService: ${{secrets.PORT_SERVICE}}
+  portTarget: ${secrets.PORT_TARGET_CUSTOMER}
 
 env: 
   - name: DB_HOST
     valueFrom:
       secretKeyRef:
-        name: configserver-side
+        name: configserver-secret
         key: DB_HOST
         optional: false
   - name: DB_USER
     valueFrom:
       secretKeyRef:
-        name: configserver-side
+        name: configserver-secret
         key: DB_USER
         optional: false
 
   - name: DB_PASS
     valueFrom:
       secretKeyRef:
-        name: configserver-side
+        name: configserver-secret
         key: DB_PASS
         optional: false
 
 extraSecrets:
   enabled: false
-
+#======================
+# PVC
+#======================
+pvc:
+  enabled: false
