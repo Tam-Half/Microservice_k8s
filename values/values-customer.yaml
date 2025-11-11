@@ -59,28 +59,30 @@ secret:
   portService: 80
   portTarget: 8081
 
-env:
+secret:
   enabled: true
-  data: 
-    - name: DB_HOST
-      valueFrom:
-        secretKeyRef:
-          name: configserver-secret
-          key: DB_HOST
-          optional: false
-    - name: DB_USER
-      valueFrom:
-        secretKeyRef:
-          name: configserver-secret
-          key: DB_USER
-          optional: false
-
-    - name: DB_PASS
-      valueFrom:
-        secretKeyRef:
-          name: configserver-secret
-          key: DB_PASS
-          optional: false
+  name: configserver
+  0:
+    name: DB_HOST
+    valueFrom:
+      secretKeyRef:
+        name: configserver-secret
+        key: DB_HOST
+        optional: false
+  1:
+    name: DB_USER
+    valueFrom:
+      secretKeyRef:
+        name: configserver-secret
+        key: DB_USER
+        optional: false
+  2:
+    name: DB_PASS
+    valueFrom:
+      secretKeyRef:
+        name: configserver-secret
+        key: DB_PASS
+        optional: false
   
 extraSecrets:
   enabled: false
