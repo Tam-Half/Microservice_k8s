@@ -1,15 +1,17 @@
-{{- if (or .Values.pvc.enabled .Values.pvc ) }}
+{{- if .Values.pvc.enabled }}
 ---
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: {{ .Values.pvc.name }}
+  name: {{ .Values.pvc.name | default (printf "%s-pvc" .Values.name) }}
   namespace: {{ .Release.Namespace }}
 spec:
   accessModes:
-    - {{ .Values.pvc.accessModes}}
+    - {{ .Values.pvc.accessModes | default "ReadWriteOnce" | quote }}
   resources:
     requests:
-      storage: {{ .Values.pvc.storage }}
+      storage: {{ .Values.pvc.storage | default "1Gi" | quote }}
+  {{- if .Values.pvc.storage.name }}
   storageClassName: {{ .Values.pvc.storage.name }}
+  {{- end }}
 {{- end }}
