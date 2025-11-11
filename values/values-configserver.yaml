@@ -59,3 +59,8 @@ secret:
 extraSecrets:
   enabled: false
 
+#======================
+# PVC
+#======================
+pvc: 
+  enabled: false
