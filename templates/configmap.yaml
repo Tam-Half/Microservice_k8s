@@ -1,16 +1,16 @@
-{{- if .Values.configmap.enabled }}
-apiVersion: v1
-kind: ConfigMap
-metadata:
-  name: {{ .Values.name }}-configmap
-  namespace: {{ .Release.Namespace }}
-data:
-  application.properties: |
-{{- if .Values.configmap.data }}
-{{- range $key, $value := .Values.configmap.data }}
-    {{ $key }}={{ $value }}
-{{- end }}
-{{- else }}
-    # no configuration data provided
-{{- end }}
-{{- end }}
+# {{- if .Values.configmap.enabled }}
+# apiVersion: v1
+# kind: ConfigMap
+# metadata:
+#   name: {{ .Values.name }}-configmap
+#   namespace: {{ .Release.Namespace }}
+# data:
+#   application.properties: |
+# {{- if .Values.configmap.data }}
+# {{- range $key, $value := .Values.configmap.data }}
+#     {{ $key }}={{ $value }}
+# {{- end }}
+# {{- else }}
+#     # no configuration data provided
+# {{- end }}
+# {{- end }}
