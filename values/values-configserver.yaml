@@ -31,7 +31,7 @@ service:
 #=====================
 ingress: 
   enabled: true
-  domain: configserver.ingress
+  domain: configserver.argocd
 
 #======================
 # CONFIGMAP
