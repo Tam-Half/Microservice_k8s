@@ -6,7 +6,7 @@ metadata:
   namespace: {{ .Release.Namespace }}
 data:
   application.properties: |
-    {{- range $key, $value := .Values.config.data }}
+{{- range $key, $value := .Values.config.data }}
     {{ $key }}={{ $value }}
-    {{- end }}
+{{- end }}
 {{- end }}
