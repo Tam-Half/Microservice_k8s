@@ -1,8 +1,11 @@
+{{`{{ if .Values.configmap.enabled }}`}}
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: {{ .Values.name }}-configmap
-  namespace: {{ .Release.Namespace }}
+  name: {{`{{ .Values.name }}`}}-configmap
+  namespace: {{`{{ .Release.Namespace }}`}}
+  labels:
+    {{- include "mychart.labels" . | nindent 4 }}
 data:
   application.properties: |
 {{- range $key, $value := .Values.configmap.data }}
@@ -11,3 +14,4 @@ data:
 {{- if not .Values.configmap.data }}
     # no configuration data provided
 {{- end }}
+{{`{{ end }}`}}
