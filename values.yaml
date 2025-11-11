@@ -44,5 +44,3 @@ pathType: Prefix
 #   name: nfs-pvc
 #   storage: 1Gi
 #   accessModes: ReadWriteMany
-configmap:
-  enabled: false

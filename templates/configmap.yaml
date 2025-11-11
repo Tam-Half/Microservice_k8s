@@ -1,5 +1,4 @@
 # ConfigMap for {{ .Values.name }}
-{{- if .Values.configmap.enabled }}
 ---
 apiVersion: v1
 kind: ConfigMap
@@ -13,5 +12,4 @@ data:
 {{- end }}
 {{- if not .Values.configmap.data }}
     # no configuration data provided
-{{- end }}
 {{- end }}
