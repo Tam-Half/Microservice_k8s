@@ -14,15 +14,32 @@ spec:
     spec:
       containers:
         - name: {{ .Values.image.name }}
-          image: {{ .Values.secret.registry }}/{{ .Values.image.repository }}:{{ .Values.image.tag }}
+          image: ${{secrets.REGISTRY}}/{{ .Values.image.repository }}:{{ .Values.image.tag }}
           ports:
             - containerPort: {{ .Values.secret.portContainerDeployment }}
         
-          {{- if .Values.secrets.enabled }}
+          {{- if (or .Values.secret.enabled .Values.extraSecrets.enabled) }}
           envFrom:
+            {{- if .Values.secret.name }}
             - secretRef:
                 name: {{ include "mychart.secretName" . }}-secret
                 optional: false
+              {{- end }}
+
+              {{- if .Values.extraSecrets.enabled }}
+
+              {{- with .Values.extraSecrets }}
+              {{- range . }}
+            - secretRef:
+                name: {{ .name }}
+              {{- end }}
+              {{- end }}
+              {{- end }}      
+          {{- end }}
+
+          {{- if (or .Values.env.enabled .Values.env ) }}
+          env:
+          {{- toYaml .Values.env | nindent 12 }}
           {{- end }}
 
           {{- if .Values.resources.enabled }}

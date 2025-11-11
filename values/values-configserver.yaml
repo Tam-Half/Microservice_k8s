@@ -1,23 +1,23 @@
-name: customerservice
+name: configserver
 
-applabels: customerservice
+applabels: configserver
 #=====================
 # DEPLOYMENT
 #=====================
 
 image:
-  name: customerservice-container
-  repository: customerservice
-  tag: 01
+  name: configserver-container
+  repository: config-server
+  tag: 02
 
 resources:
   enabled: false
-  request:
-    memory: 64Mi
-    cpu: 250m
-  limit:
-    memory: 128Mi
-    cpu: 500m
+  # request:
+  #   memory: 64Mi
+  #   cpu: 250m
+  # limit:
+  #   memory: 128Mi
+  #   cpu: 500m
 
 #======================
 # SERVICE
@@ -30,7 +30,7 @@ service:
 #=====================
 ingress: 
   enabled: true
-  domain: customer.ingress
+  domain: configserver.ingress
 
 #======================
 # CONFIGMAP
@@ -55,30 +55,8 @@ ingress:
 #======================
 secret:
   enabled: false
-  portService: ${}
-  portTarget: ${}
-
-env: 
-  - name: DB_HOST
-    valueFrom:
-      secretKeyRef:
-        name: configserver-side
-        key: DB_HOST
-        optional: false
-  - name: DB_USER
-    valueFrom:
-      secretKeyRef:
-        name: configserver-side
-        key: DB_USER
-        optional: false
-
-  - name: DB_PASS
-    valueFrom:
-      secretKeyRef:
-        name: configserver-side
-        key: DB_PASS
-        optional: false
-
+  portService: ${{secrets.PORT_SERVICE}}
+  portTarget: ${secrets.PORT_TARGET_CONFIGSERVER}}
 extraSecrets:
   enabled: false
 

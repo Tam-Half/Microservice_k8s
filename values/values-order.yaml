@@ -61,7 +61,11 @@ volumeMounts:
 #======================
 # SECRET
 #======================
-secrets:
-  enabled: false
-
-  HOST_PORT: ${PORT_CONTAINER_DEPLOYMENT}
+secret:
+  enabled: true
+  name: 
+  
+extraSecrets:
+  enabled: true
+    - name: serviceB-secret
+    - name: shared-secret
