@@ -62,6 +62,10 @@ secret:
   DB_HOST: 192.168.0.127
   DB_USER: sa
   DB_PASS: Root1234
+  SPRING_RABBITMQ_USERNAME: testuser 
+  SPRING_RABBITMQ_PASSWORD: testpass
+  SPRING_RABBITMQ_HOST: my-rabbit.rabbitmq.svc.cluster.local
+  SPRING_RABBITMQ_PORT: 5672
 
 
 extraSecrets:
