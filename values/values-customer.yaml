@@ -9,6 +9,7 @@ image:
   name: customerservice-container
   repository: customerservice
   tag: "01"
+  port: 120
 
 resources:
   enabled: false
@@ -55,8 +56,8 @@ configmap:
 #======================
 secret:
   enabled: true
-  portService: ${{secrets.PORT_SERVICE}}
-  portTarget: ${secrets.PORT_TARGET_CUSTOMER}
+  portService: 80
+  portTarget: 8081
 
 env:
   enabled: true
