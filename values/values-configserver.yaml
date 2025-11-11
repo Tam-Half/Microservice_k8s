@@ -8,9 +8,9 @@ applabels: configserver
 image:
   name: configserver-container
   repository: config-server
-  tag: 02
+  tag: "02"
   port: 120
-
+# cmt
 resources:
   enabled: false
   # request:
