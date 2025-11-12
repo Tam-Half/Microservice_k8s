@@ -1,0 +1,120 @@
+name: paymentservice
+
+applabels: paymentservice
+#=====================
+# DEPLOYMENT
+#=====================
+
+image:
+  name: paymentservice-container
+  repository: paymentservice
+  tag: "02"
+  port: 120
+
+resources:
+  enabled: false
+  request:
+    memory: 64Mi
+    cpu: 250m
+  limit:
+    memory: 128Mi
+    cpu: 500m
+
+#======================
+# SERVICE
+#=====================
+service:
+  enabled: false
+
+#======================
+# INGRESS
+#=====================
+ingress: 
+  enabled: false
+  # domain: order.argocd
+#======================
+# CONFIGMAP
+#=====================
+
+configmap:
+  enabled: false
+#   nameConfigMap: orderservice-be-application-propertie-configmap
+#   data:
+#     server.port: "${PORT_SERVICE}"
+#     spring.application.name: "${NAME_SERVICE}"
+
+
+#======================
+# VOLUMES AND MOUNTVOLUMES
+#======================
+
+
+
+#======================
+# SECRETS
+#======================
+secret:
+  enabled: true
+  portService: 80
+  portTarget: 8085
+
+env:
+  enabled: true
+  0:
+    name: DB_HOST
+    valueFrom:
+      secretKeyRef:
+        name: configserver-secret
+        key: DB_HOST
+        optional: false
+  1:
+    name: DB_USER
+    valueFrom:
+      secretKeyRef:
+        name: configserver-secret
+        key: DB_USER
+        optional: false
+  2:
+    name: DB_PASS
+    valueFrom:
+      secretKeyRef:
+        name: configserver-secret
+        key: DB_PASS
+        optional: false
+  3:
+    name: SPRING_RABBITMQ_HOST
+    valueFrom:
+      secretKeyRef:
+        name: configserver-secret
+        key: SPRING_RABBITMQ_HOST
+        optional: false    
+  4:
+    name: SPRING_RABBITMQ_PORT
+    valueFrom:
+      secretKeyRef:
+        name: configserver-secret
+        key: SPRING_RABBITMQ_PORT
+        optional: false   
+  5:
+    name: SPRING_RABBITMQ_USERNAME
+    valueFrom:
+      secretKeyRef:
+        name: configserver-secret
+        key: SPRING_RABBITMQ_USERNAME
+        optional: false   
+  6:
+    name: SPRING_RABBITMQ_PASSWORD
+    valueFrom:
+      secretKeyRef:
+        name: configserver-secret
+        key: SPRING_RABBITMQ_PASSWORD
+        optional: false   
+
+#
+extraSecrets:
+  enabled: false
+#======================
+# PVC
+#======================
+pvc:
+  enabled: false
