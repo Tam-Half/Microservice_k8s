@@ -8,7 +8,7 @@ applabels: customerservice
 image:
   name: customerservice-container
   repository: customerservice
-  tag: "latest"
+  tag: "03"
   port: 120
 
 resources:
