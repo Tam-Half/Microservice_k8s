@@ -56,7 +56,7 @@ env:
 # SECRETS
 #======================
 secret:
-  enabled: true
+  enabled: false
   portService: 80
   portTarget: 8888
   DB_HOST: 192.168.0.127
