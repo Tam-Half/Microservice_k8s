@@ -30,7 +30,7 @@ service:
 # INGRESS
 #=====================
 ingress: 
-  enabled: true
+  enabled: false
   domain: configserver.argocd
 
 #======================
