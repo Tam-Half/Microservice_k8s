@@ -59,7 +59,7 @@ secret:
   enabled: true
   portService: 80
   portTarget: 8888
-  DB_HOST: 192.168.0.127
+  DB_HOST: 192.168.0.105
   DB_USER: sa
   DB_PASS: Root1234
   SPRING_RABBITMQ_USERNAME: testuser 
